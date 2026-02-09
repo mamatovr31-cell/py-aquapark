@@ -1,5 +1,4 @@
 from abc import ABC
-from os import name
 from typing import Any
 
 
@@ -8,13 +7,13 @@ class IntegerRange:
         self.min_amount = min_amount
         self.max_amount = max_amount
 
-    def __set_name__(self, owner: type, name: str) -> None :
+    def __set_name__(self, owner: type, name: str) -> None:
         self.public_name = name
         self.protected_name = "_" + name
 
     def __get__(
             self,
-            instance: object | None ,
+            instance: object | None,
             objtype: type | None = None
     ) -> Any:
         if instance is None:
@@ -36,17 +35,17 @@ class IntegerRange:
 
 
 class Visitor:
-   def __init__(
-           self,
-           name: str,
-           age: int,
-           weight: int,
-           height: int
-   ) -> None:
-       self.name = name
-       self.age = age
-       self.weight = weight
-       self.height = height
+    def __init__(
+        self,
+        name: str,
+        age: int,
+        weight: int,
+        height: int
+    ) -> None:
+        self.name = name
+        self.age = age
+        self.weight = weight
+        self.height = height
 
 
 class SlideLimitationValidator(ABC):
@@ -89,7 +88,7 @@ class Slide:
                 visitor.weight,
                 visitor.height
             )
-        except(TypeError, ValueError):
+        except (TypeError, ValueError):
             return False
         else:
             return True
